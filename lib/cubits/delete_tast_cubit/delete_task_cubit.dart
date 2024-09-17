@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_app/model/sqldb.dart';
+import 'package:todo_app/sqldb.dart';
 
 part 'delete_task_state.dart';
 
