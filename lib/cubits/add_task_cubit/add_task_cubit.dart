@@ -17,7 +17,7 @@ class AddTaskCubit extends Cubit<AddTaskState> {
       emit(AddTaskLoading());
       var response = myDB.insertData(
           '''INSERT INTO "todo" ("title", "subtitle", "date", "color") 
-VALUES ('${todo.title}', '${todo.subTitle}', '${todo.date}', ${color})''');
+VALUES ('${todo.title}', '${todo.subTitle}', '${todo.date}', ${todo.color})''');
 
       print('addddddddd task ====${response}');
 

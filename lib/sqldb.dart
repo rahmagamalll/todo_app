@@ -31,7 +31,7 @@ class SqlDb {
     "color" INTEGER NOT NULL
   )
   ''');
-    print("onUpgrade =====================================");
+    print("onUpgrade ======");
   }
 
   _onCreate(Database db, int version) async {
@@ -54,7 +54,7 @@ class SqlDb {
     "color" INTEGER NOT NULL
   )
   ''');
-    print(" onCreate =====================================");
+    print(" onCreate ===============");
   }
 
   readData(String sql) async {
@@ -81,8 +81,5 @@ class SqlDb {
     return response;
   }
 
-// SELECT
-// DELETE
-// UPDATE
-// INSERT
+
 }

@@ -65,6 +65,21 @@ VALUES ('${todo.title}', '${todo.subTitle}', '${todo.date}', ${todo.color})''');
       );
     }
   }
+  deleteAllTaskFromHistory() async {
+    try {
+       await myDB
+          .deleteData('DELETE FROM "deletedtodolist"');
+
+     
+
+      emit(HistoryDeletedTasksSuccess());
+    } on Exception catch (e) {
+      emit(
+        HistoryDeletedTasksFailure(
+            errMessage: 'deleete task from history =======${e.toString()}'),
+      );
+    }
+  }
 
   editeEletedTaskinHistory({int? id, String? title, String? subtitle}) async {
     try {

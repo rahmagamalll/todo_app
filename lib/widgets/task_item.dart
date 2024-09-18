@@ -5,9 +5,15 @@ import 'package:todo_app/model/todo_model.dart';
 import 'package:todo_app/views/edit_task_view.dart';
 
 class TaskItem extends StatefulWidget {
-  TaskItem({super.key, required this.task, required this.onPressed});
+  TaskItem(
+      {super.key,
+      required this.task,
+      required this.onPressed,
+      required this.pushPadge,required this.icon});
   final TodoModel task;
   Function() onPressed;
+  String pushPadge;
+  Icon icon;
 
   @override
   State<TaskItem> createState() => _TaskItemState();
@@ -19,7 +25,7 @@ class _TaskItemState extends State<TaskItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditTaskView.id, arguments: widget.task);
+        Navigator.pushNamed(context, widget.pushPadge, arguments: widget.task);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 8),
@@ -54,7 +60,7 @@ class _TaskItemState extends State<TaskItem> {
                       padding: const EdgeInsets.only(bottom: 5, top: 1),
                       child: Text(
                         widget.task.title,
-                         maxLines: 1,
+                        maxLines: 1,
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 25,
@@ -82,7 +88,7 @@ class _TaskItemState extends State<TaskItem> {
                     ),
                     trailing: IconButton(
                       onPressed: widget.onPressed,
-                      icon:const Icon(FontAwesomeIcons.trash),
+                      icon: widget.icon ,
                       color: kPrimaryColor,
                     ),
                   ),

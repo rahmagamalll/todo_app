@@ -58,7 +58,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                   title: title!,
                   subTitle: content!,
                   date: formattedDate.toString(),
-                  color: Colors.blue.value,
+                  color: Color(0xffa0e7e5).value,
                 );
 
                 BlocProvider.of<AddTaskCubit>(context).addTask(noteModel);

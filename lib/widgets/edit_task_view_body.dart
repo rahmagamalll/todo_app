@@ -17,7 +17,7 @@ class EditTaskViewBody extends StatefulWidget {
 }
 
 class _EditTaskViewBodyState extends State<EditTaskViewBody> {
-  String? title, subTitel; //full widget becuse has variablsssssssss
+  String? title, subTitel;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
       padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
       child: Column(
         children: [
-        const  SizedBox(
+          const SizedBox(
             height: 30,
           ),
           CustomAppBar(
@@ -39,17 +39,84 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
               BlocProvider.of<EditTaskCubit>(context)
                   .editeTask(id: widget.task.id, title: t, subtitle: st);
 
-              BlocProvider.of<HistoryDeletedTasksCubit>(context)
-                  .editeEletedTaskinHistory(
-                      id: widget.task.id, title: t, subtitle: st);
-                      
               Navigator.pop(context);
-              BlocProvider.of<HistoryDeletedTasksCubit>(context)
-                  .allTasksdeletedInHomeToHistory();
+
               BlocProvider.of<AlltasksCubit>(context).allTasks();
             },
           ),
-      const    SizedBox(
+          const SizedBox(
+            height: 20,
+          ),
+          CustomTextFormFild(
+            hintText: 'Title',
+            controller: TextEditingController(text: widget.task.title),
+            onChanged: (data) {
+              title = data;
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          CustomTextFormFild(
+            controller: TextEditingController(text: widget.task.subTitle),
+            onChanged: (data) {
+              subTitel = data;
+            },
+            hintText: 'Content',
+            maxLines: 5,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          EditColorsListView(
+            task: widget.task,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class EditTaskViewBodyForHistory extends StatefulWidget {
+  const EditTaskViewBodyForHistory({super.key, required this.task});
+  final TodoModel task;
+
+  @override
+  State<EditTaskViewBodyForHistory> createState() =>
+      _EditTaskViewBodyForHistoryState();
+}
+
+class _EditTaskViewBodyForHistoryState
+    extends State<EditTaskViewBodyForHistory> {
+  String? title, subTitel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          CustomAppBar(
+            name: 'Edit',
+            icon: Icons.check,
+            onPressed: () {
+              String t = widget.task.title = title ?? widget.task.title;
+              String st =
+                  widget.task.subTitle = subTitel ?? widget.task.subTitle;
+
+              BlocProvider.of<HistoryDeletedTasksCubit>(context)
+                  .editeEletedTaskinHistory(
+                      id: widget.task.id, title: t, subtitle: st);
+
+              Navigator.pop(context);
+              BlocProvider.of<HistoryDeletedTasksCubit>(context)
+                  .allTasksdeletedInHomeToHistory();
+            },
+          ),
+          const SizedBox(
             height: 20,
           ),
           CustomTextFormFild(

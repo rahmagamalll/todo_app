@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/cubits/all_taska_cubit/all_tasks_cubit.dart';
 import 'package:todo_app/model/todo_model.dart';
-import 'package:todo_app/views/history_deleted.dart';
+import 'package:todo_app/views/history_deleted_view.dart';
 import 'package:todo_app/widgets/custom_app_bar.dart';
 import 'package:todo_app/widgets/tasks_list_view.dart';
 
@@ -37,7 +37,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 name: 'ToDo',
                 icon: Icons.delete_sweep_outlined,
                 onPressed: () {
-                  Navigator.pushNamed(context, HistoryDeleted.id);
+                  Navigator.pushNamed(context, HistoryDeletedView.id);
                 
                 },
               ),

@@ -22,3 +22,21 @@ class EditTaskView extends StatelessWidget {
     );
   }
 }
+class EditTaskViewForHistory extends StatelessWidget {
+  const EditTaskViewForHistory({super.key});
+  static String id = 'EditTaskViewForHistory';
+  @override
+  Widget build(BuildContext context) {
+    final TodoModel task =
+        ModalRoute.of(context)!.settings.arguments as TodoModel;
+    return Scaffold(
+      backgroundColor: const Color(0xff141414),
+      body: BlocProvider(
+        create: (context) => EditTaskCubit(),
+        child: EditTaskViewBodyForHistory(
+          task: task,
+        ),
+      ),
+    );
+  }
+}

@@ -13,13 +13,10 @@ class BuildShowBottomSheet extends StatelessWidget {
             left: 16,
             right: 16,
             bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: BlocProvider(
-          create: (context) => AddTaskCubit(),
-          child:const SingleChildScrollView(
-              child: AbsorbPointer(
-            absorbing: State is AddTaskLoading ? true : false,
-            child: AddTaskForm(),
-          )),
-        ));
+        child: const SingleChildScrollView(
+            child: AbsorbPointer(
+          absorbing: State is AddTaskLoading ? true : false,
+          child: AddTaskForm(),
+        )));
   }
 }
